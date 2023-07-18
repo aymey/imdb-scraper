@@ -1,7 +1,8 @@
 const axios = require('axios');
 const fs = require('fs').promises;
 
-const apiKey = 'key here pleaseeee!'
+// const apiKey = 'key here pleaseeee!'
+const apiKey = '6cce1ff4'
 
 async function searchMoviesByTitle(title) {
   try {
@@ -39,17 +40,47 @@ async function main() {
 
       if (searchResult && searchResult.Search) {
         for (const movie of searchResult.Search) {
-          console.log(`Title: ${movie.Title}`);
-          console.log(`Year: ${movie.Year}`);
-          console.log(`IMDb ID: ${movie.imdbID}`);
           try {
+            // thanks https://readthedocs.org/projects/omdbpy/downloads/pdf/latest/
             const response = await axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`);
             const movieDetails = response.data;
-            console.log(`Genre: ${movieDetails.Genre || 'N/A'}`);
-            console.log(`IMDb Rating: ${movieDetails.imdbRating || 'N/A'}`);
-            console.log(`Actors: ${movieDetails.Actors || 'N/A'}`);
-            console.log(`Director: ${movieDetails.Director || 'N/A'}`);
-            console.log(`Producer: ${movieDetails.Production || 'N/A'}`);
+            console.log(`Title: ${movieDetails.Title}`)
+            console.log(`Year: ${movieDetails.Year}`)
+            console.log(`Type: ${movieDetails.Type}`)
+            console.log(`Actors: ${movieDetails.Actors}`)
+            console.log(`Awards: ${movieDetails.Awards}`)
+            console.log(`Country: ${movieDetails.Country}`)
+            console.log(`Director: ${movieDetails.Director}`)
+            console.log(`Genre: ${movieDetails.Genre}`)
+            console.log(`Episode: ${movieDetails.Episode}`)
+            console.log(`Season: ${movieDetails.Season}`)
+            console.log(`SeriesID: ${movieDetails.SeriesID}`)
+            console.log(`Language: ${movieDetails.Language}`)
+            console.log(`Metascore: ${movieDetails.Metascore}`)
+            console.log(`Plot: ${movieDetails.Plot}`)
+            console.log(`Poster: ${movieDetails.Poster}`)
+            console.log(`Rated: ${movieDetails.Rated}`)
+            console.log(`Ratings: ${movieDetails.Ratings}`)
+            console.log(`Released: ${movieDetails.Released}`)
+            console.log(`Runtime: ${movieDetails.Runtime}`)
+            console.log(`Writer: ${movieDetails.Writer}`)
+            console.log(`imdbID: ${movieDetails.imdbID}`)
+            console.log(`imdbRating: ${movieDetails.imdbRating}`)
+            console.log(`imdbVotes: ${movieDetails.imdbVotes}`)
+            console.log(`BoxOffice: ${movieDetails.BoxOffice}`)
+            console.log(`DVD: ${movieDetails.DVD}`)
+            console.log(`Production: ${movieDetails.Production}`)
+            console.log(`Website: ${movieDetails.Website}`)
+            console.log(`tomatoConsensus: ${movieDetails.tomatoConsensus}`)
+            console.log(`tomatoFresh: ${movieDetails.tomatoFresh}`)
+            console.log(`tomatoImage: ${movieDetails.tomatoImage}`)
+            console.log(`tomatoMeter: ${movieDetails.tomatoMeter}`)
+            console.log(`tomatoRating: ${movieDetails.tomatoRating}`)
+            console.log(`tomatoReviews: ${movieDetails.tomatoReviews}`)
+            console.log(`tomatoRotten: ${movieDetails.tomatoRotten}`)
+            console.log(`tomatoUserMeter: ${movieDetails.tomatoUserMeter}`)
+            console.log(`tomatoUserRating: ${movieDetails.tomatoUserRating}`)
+            console.log(`tomatoUserReviews: ${movieDetails.tomatoUserReviews}`)
             console.log('-----------------------');
           } catch (error) {
             console.error('Error fetching movie details:', error.message);
