@@ -13,4 +13,4 @@ Aswell as obviously depending on Node, imdb-scraper depends on `axios` and file 
 
 ## Example / Showcase
 verbose scraper cli output vs official omdb example json output:
-![scraper](http://ibb.co/kcJhsTT) ![omdb](http://ibb.co/zQSbsg1)
+![scraper](http://i.ibb.co/pXQ3BTT/image.png) ![omdb](http://i.ibb.co/WGcFnXQ/image.png)
