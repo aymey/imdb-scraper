@@ -1,8 +1,7 @@
 const axios = require('axios');
 const fs = require('fs').promises;
 
-// const apiKey = 'key here pleaseeee!'
-const apiKey = '6cce1ff4'
+const apiKey = 'key here pleaseeee!'
 
 async function searchMoviesByTitle(title) {
   try {
