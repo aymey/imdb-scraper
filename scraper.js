@@ -42,7 +42,6 @@ async function main() {
           console.log(`Title: ${movie.Title}`);
           console.log(`Year: ${movie.Year}`);
           console.log(`IMDb ID: ${movie.imdbID}`);
-          console.log('-----------------------');
           try {
             const response = await axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`);
             const movieDetails = response.data;
