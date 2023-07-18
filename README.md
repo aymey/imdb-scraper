@@ -9,4 +9,8 @@ scrapes imdb using omdb api
 I suggest going into [`scraper.js`](https://github.com/aymey/imdb-scraper/blob/main/scraper.js) and removing the unneeded fields because it uses all available fields by default
 
 ## dependencies
-Aswell as obviously depending on Node, imdb-scraper depends on `axios` and file system (`fs`): use `npm install axios`.
+Aswell as obviously depending on Node, imdb-scraper depends on `axios` and file system (`fs`): use `npm install axios` to install.
+
+## Example / Showcase
+verbose scraper cli output vs official omdb example json output:
+![scraper](http://ibb.co/kcJhsTT) ![omdb](http://ibb.co/zQSbsg1)
