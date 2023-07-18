@@ -1,0 +1,19 @@
+{
+  "name": "imdb-scraper",
+  "version": "1.0.0",
+  "description": "scrapes imdb using omdb api",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "imdb",
+    "scraper",
+    "omdb",
+    "api"
+  ],
+  "author": "Amy",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
