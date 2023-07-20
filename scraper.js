@@ -40,47 +40,15 @@ async function main() {
       if (searchResult && searchResult.Search) {
         for (const movie of searchResult.Search) {
           try {
-            // thanks https://readthedocs.org/projects/omdbpy/downloads/pdf/latest/
             const response = await axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`);
             const movieDetails = response.data;
-            console.log(`Title: ${movieDetails.Title}`)
-            console.log(`Year: ${movieDetails.Year}`)
-            console.log(`Type: ${movieDetails.Type}`)
-            console.log(`Actors: ${movieDetails.Actors}`)
-            console.log(`Awards: ${movieDetails.Awards}`)
-            console.log(`Country: ${movieDetails.Country}`)
-            console.log(`Director: ${movieDetails.Director}`)
-            console.log(`Genre: ${movieDetails.Genre}`)
-            console.log(`Episode: ${movieDetails.Episode}`)
-            console.log(`Season: ${movieDetails.Season}`)
-            console.log(`SeriesID: ${movieDetails.SeriesID}`)
-            console.log(`Language: ${movieDetails.Language}`)
-            console.log(`Metascore: ${movieDetails.Metascore}`)
-            console.log(`Plot: ${movieDetails.Plot}`)
-            console.log(`Poster: ${movieDetails.Poster}`)
-            console.log(`Rated: ${movieDetails.Rated}`)
-            console.log(`Ratings: ${movieDetails.Ratings}`)
-            console.log(`Released: ${movieDetails.Released}`)
-            console.log(`Runtime: ${movieDetails.Runtime}`)
-            console.log(`Writer: ${movieDetails.Writer}`)
-            console.log(`imdbID: ${movieDetails.imdbID}`)
-            console.log(`imdbRating: ${movieDetails.imdbRating}`)
-            console.log(`imdbVotes: ${movieDetails.imdbVotes}`)
-            console.log(`BoxOffice: ${movieDetails.BoxOffice}`)
-            console.log(`DVD: ${movieDetails.DVD}`)
-            console.log(`Production: ${movieDetails.Production}`)
-            console.log(`Website: ${movieDetails.Website}`)
-            console.log(`tomatoConsensus: ${movieDetails.tomatoConsensus}`)
-            console.log(`tomatoFresh: ${movieDetails.tomatoFresh}`)
-            console.log(`tomatoImage: ${movieDetails.tomatoImage}`)
-            console.log(`tomatoMeter: ${movieDetails.tomatoMeter}`)
-            console.log(`tomatoRating: ${movieDetails.tomatoRating}`)
-            console.log(`tomatoReviews: ${movieDetails.tomatoReviews}`)
-            console.log(`tomatoRotten: ${movieDetails.tomatoRotten}`)
-            console.log(`tomatoUserMeter: ${movieDetails.tomatoUserMeter}`)
-            console.log(`tomatoUserRating: ${movieDetails.tomatoUserRating}`)
-            console.log(`tomatoUserReviews: ${movieDetails.tomatoUserReviews}`)
-            console.log('-----------------------');
+
+            // thanks https://readthedocs.org/projects/omdbpy/downloads/pdf/latest/
+            let delim = '	', data = movieDetails.Title + delim + movieDetails.Year + delim + movieDetails.Type + delim + movieDetails.Actors + delim + movieDetails.Awards + delim + movieDetails.Country + delim + movieDetails.Director + delim + movieDetails.Genre + delim + movieDetails.Episode + delim + movieDetails.Season + delim + movieDetails.SeriesID + delim + movieDetails.Language + delim + movieDetails.Metascore + delim + movieDetails.Plot + delim + movieDetails.Poster + delim + movieDetails.Rated + delim + movieDetails.Ratings + delim + movieDetails.Released + delim + movieDetails.Runtime + delim + movieDetails.Writer + delim + movieDetails.imdbID + delim + movieDetails.imdbRating + delim + movieDetails.imdbVotes + delim + movieDetails.BoxOffice + delim + movieDetails.DVD + delim + movieDetails.Production + delim + movieDetails.Website + delim + movieDetails.tomatoConsensus + delim + movieDetails.tomatoFresh + delim + movieDetails.tomatoImage + delim + movieDetails.tomatoMeter + delim + movieDetails.tomatoRating + delim + movieDetails.tomatoReviews + delim + movieDetails.tomatoRotten + delim + movieDetails.tomatoUserMeter + delim + movieDetails.tomatoUserRating + delim + movieDetails.tomatoUserReviews + '\n'// dumb way but whatever
+            fs.appendFile('output.tsv', data, 'utf8', (e) => {
+              e ? console.error('Error writing to the file:', err) : console.log(`Data for "${movie}" has been written to output successfully.`);
+            });
+            console.log(`successfully written for ${movieTitle}: ${movie}\n-----------------------`);
           } catch (error) {
             console.error('Error fetching movie details:', error.message);
           }
