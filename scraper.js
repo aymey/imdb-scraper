@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs').promises;
 
-const apiKey = ' OMDB key here pleaseeee!'
+const apiKey = 'OMDB key here pleaseeee!'
 
 async function getMovieById(imdbID) {
   try {
@@ -34,7 +34,7 @@ async function main() {
       if (movieDetails) {
         // thanks https://readthedocs.org/projects/omdbpy/downloads/pdf/latest/
         let delim = '	', data = movieDetails.Title + delim + movieDetails.Year + delim + movieDetails.Type + delim + movieDetails.Actors + delim + movieDetails.Awards + delim + movieDetails.Country + delim + movieDetails.Director + delim + movieDetails.Genre + delim + movieDetails.Episode + delim + movieDetails.Season + delim + movieDetails.SeriesID + delim + movieDetails.Language + delim + movieDetails.Metascore + delim + movieDetails.Plot + delim + movieDetails.Poster + delim + movieDetails.Rated + delim + movieDetails.Ratings + delim + movieDetails.Released + delim + movieDetails.Runtime + delim + movieDetails.Writer + delim + movieDetails.imdbID + delim + movieDetails.imdbRating + delim + movieDetails.imdbVotes + delim + movieDetails.BoxOffice + delim + movieDetails.DVD + delim + movieDetails.Production + delim + movieDetails.Website + delim + movieDetails.tomatoConsensus + delim + movieDetails.tomatoFresh + delim + movieDetails.tomatoImage + delim + movieDetails.tomatoMeter + delim + movieDetails.tomatoRating + delim + movieDetails.tomatoReviews + delim + movieDetails.tomatoRotten + delim + movieDetails.tomatoUserMeter + delim + movieDetails.tomatoUserRating + delim + movieDetails.tomatoUserReviews + '\n'// dumb way but whatever
-        fs.appendFile('output.tsv', data, 'utf8', (e) => {
+        fs.appendFile('output.tsv', data, 'latin1', (e) => {
           e ? console.error('Error writing to the file:', err) : console.log(`Data for "${movie}" has been written to output successfully.`);
         });
         console.log(`successfully written for ${movieIDs}: ${imdbID}\n-----------------------`);
